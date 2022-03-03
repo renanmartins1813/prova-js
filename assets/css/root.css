@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'Helvetica Neue Interface';
+    src: url('./../fonts/_H_HelveticaNeueInterface/_H_HelveticaNeueInterface.ttf');
+}
+
+:root{
+    font-family: 'Helvetica Neue Interface';
+    --color-lotofacil: #7F3992;
+    --color-megasena: #01AC66;
+    --color-quina: #F79C31;
+    --color-green-interface: #27C383;
+    --color-game-btn: #ADC0C4;
+    --color-bg: #F7F7F7;
+    --main-text-color: #707070;
+    --secondary-text-color: #868686;
+    --color-border: #EBEBEB;
+    --color-cart: #E2E2E2;
+}

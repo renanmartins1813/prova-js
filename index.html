@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="./javascript/cart/index.js" defer></script>
+    <script src="./javascript/index.js" defer></script>
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/root.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>prova-js</title>
+</head>
+
+<body>
+    <main id="app" class="app">
+        <header class="header fw700 fcolor_main">
+            <nav class="nav">
+                <div class="nav__div">
+                    <div class="nav__div_tgl cursor_pointer">TTGL</div>
+                    <div class="cursor_pointer">Home</div>
+                </div>
+                <div class="nav__div">
+                    <div class="cursor_pointer">Conta</div>
+                    <div class="cursor_pointer">Sair -></div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container grid_c1">
+            <div class="fs24 fcolor_main">
+                <span class="fw700">APOSTE</span> COM A LOTERIA CAIXA
+            </div>
+            <div class="fs17 fcolor_secondary fw700">
+                Escolha um jogo
+            </div>
+            <div class="choose">
+                <div id="lotofacil" value="lotofacil" active="false" data-js="bets"
+                    class="choose__lotofacil chooseBnt cursor_pointer">Lotofácil</div>
+                <div id="megasena" value="mega-sena" active="false" data-js="bets"
+                    class="choose__megasena chooseBnt cursor_pointer">Mega-Sena</div>
+                <div id="quina" value="quina" active="false" data-js="bets"
+                    class="choose__quina chooseBnt cursor_pointer">Quina</div>
+            </div>
+            <section>
+                <div id="description" class="description fs17 fcolor_secondary">
+                    Selecione um dos jogos acima
+                </div>
+                <div id="game" class="game">
+                </div>
+                <div class="actions">
+                    <div class="container2">
+                        <div id="completeGame" class="actions_btn cursor_pointer">Completar um jogo</div>
+                        <div id="clearGame" class="actions_btn clear_game cursor_pointer">Limpar o jogo</div>
+                    </div>
+
+                    <div class="container3">
+                        <div id="addToCart" class="actions_btn cart_btn cursor_pointer">
+                            <svg width="27px" height="27px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                                <polygon fill="var(--ci-primary-color, currentColor)"
+                                    points="160 96.039 160 128.039 464 128.039 464 191.384 428.5 304.039 149.932 304.039 109.932 16 16 16 16 48 82.068 48 122.068 336.039 451.968 336.039 496 196.306 496 96.039 160 96.039"
+                                    class="ci-primary" />
+                                <path fill="var(--ci-primary-color, currentColor)"
+                                    d="M176.984,368.344a64.073,64.073,0,0,0-64,64h0a64,64,0,0,0,128,0h0A64.072,64.072,0,0,0,176.984,368.344Zm0,96a32,32,0,1,1,32-32A32.038,32.038,0,0,1,176.984,464.344Z"
+                                    class="ci-primary" />
+                                <path fill="var(--ci-primary-color, currentColor)"
+                                    d="M400.984,368.344a64.073,64.073,0,0,0-64,64h0a64,64,0,0,0,128,0h0A64.072,64.072,0,0,0,400.984,368.344Zm0,96a32,32,0,1,1,32-32A32.038,32.038,0,0,1,400.984,464.344Z"
+                                    class="ci-primary" />
+                            </svg>
+                            <div>Adicionar</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="grid_c2">
+            <div class="cart">
+                <div class="pad_left19 pad_top32">
+                    <span class="fs24 fcolor_main fw700">CARRINHO</span>
+
+                    <div id="cart_items" class="cart_items fcolor_secondary">
+
+                    </div>
+
+                    <div class="fs24 fcolor_main">
+                        <span class="fw700">VALOR</span> TOTAL: <span id="total">R$ 0.00</span>
+                    </div>
+                </div>
+
+                <div class="cart_save fs35 fw700 fcolor_green cursor_pointer">
+                    Save ->
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer fs17 fcolor_main grid_f">
+            Copyright 2022 Luby Software
+        </footer>
+    </main>
+</body>
+
+</html>

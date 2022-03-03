@@ -1,0 +1,351 @@
+.app {
+    width: 1366px;
+    height: 1050px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 130px 679px 427px 130px;
+    grid-template-rows: 75px auto 145px 75px;
+    grid-template-areas:
+        "h h h h"
+        "mpt1 c1 c2 mpt2"
+        "mpt1 mpt3 mpt3 mpt2"
+        "f f f f";
+    background-color: var(--color-bg);
+}
+
+.grid_h {
+    grid-area: h;
+}
+
+.grid_c1 {
+    grid-area: c1;
+}
+
+.grid_c2 {
+    grid-area: c2;
+}
+
+.grid_f {
+    grid-area: f;
+}
+
+.header {
+    width: 1366px;
+    height: 70px;
+    font-size: 20px;
+    border-bottom: 2px solid var(--color-border);
+}
+
+.nav {
+    height: 70px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav__div {
+    width: 30%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.nav__div_tgl {
+    font-size: 44px;
+    position: relative;
+}
+
+.nav__div_tgl:after {
+    content: '';
+    height: 7px;
+    position: absolute;
+    top: 52px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(181, 196, 1, 1);
+    border-radius: 6px;
+}
+
+.container {
+    margin-top: 74px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+}
+
+.choose {
+    display: flex;
+}
+
+.chooseBnt {
+    width: 113px;
+    height: 34px;
+    margin-right: 25px;
+    border-radius: 100px;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.choose__lotofacil {
+    border: solid var(--color-lotofacil);
+    color: var(--color-lotofacil);
+}
+
+.choose__megasena {
+    border: solid var(--color-megasena);
+    background-color: var(--color-megasena);
+    color: #fff;
+}
+
+.choose__quina {
+    border: solid var(--color-quina);
+    color: var(--color-quina);
+}
+
+.description {
+    min-height: 2em;
+}
+
+.game {
+    width: 100%;
+    height: 415px;
+    overflow-y: scroll;
+    margin: auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.game_btn {
+    width: 63px;
+    height: 63px;
+    border-radius: 50%;
+    margin: 0 10px 20px 10px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background-color: var(--color-game-btn);
+}
+
+.actions {
+    display: flex;
+    margin-top: 44px;
+}
+
+.actions_btn {
+    width: 164px;
+    height: 52px;
+    font-size: 16px;
+    color: var(--color-green-interface);
+    border: 1px solid var(--color-green-interface);
+    border-radius: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.container2 {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container3 {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.clear_game {
+    width: 135px;
+}
+
+.cart_btn {
+    width: 209px;
+    color: #fff;
+    background-color: var(--color-green-interface);
+}
+
+.selected_btn {
+    background-color: var(--color-green-interface);
+}
+
+.cart {
+    width: 317px;
+    height: 484px;
+    margin: 42px 0 0 41px;
+    border: 1px solid var(--color-cart);
+    border-radius: 10px;
+    background-color: #fff;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.cart_items {
+    width: 280px;
+    height: 270px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* background-color: red; */
+}
+
+.cart_item_wrapper {
+    width: 280px;
+    height: 80px;
+    /* background-color: black; */
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.trash {
+    width: 27px;
+    height: 27px;
+    background-image: url('./../icons/trash-svgrepo-com.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.cart_item{
+    width: 238px;
+    height: 100%;
+    padding-left: 1em;
+    word-wrap: wrap;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    border-left: 4px solid var(--secondary-text-color);
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+.cart_item_Lotofácil {
+    border-left-color: var(--color-lotofacil);
+}
+
+.cart_item_Mega-Sena {
+    border-left-color: var(--color-megasena);
+}
+
+.cart_item_Quina {
+    border-left-color: var(--color-quina);
+}
+
+.cart_save {
+    width: 317px;
+    height: 96px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-cart);
+}
+
+.footer {
+    border-top: 2px solid var(--color-border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px var(--secondary-text-color);
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--main-text-color);
+    border-radius: 10px;
+}
+
+.cursor_pointer {
+    cursor: pointer;
+}
+
+.fs15 {
+    font-size: 15px;
+}
+
+.fs16 {
+    font-size: 16px;
+}
+
+.fs17 {
+    font-size: 17px;
+}
+
+.fs24 {
+    font-size: 24px;
+}
+
+.fs35 {
+    font-size: 35px;
+}
+
+.fcolor_main {
+    color: var(--main-text-color);
+}
+
+.fcolor_secondary {
+    color: var(--secondary-text-color);
+}
+
+.fcolor_green {
+    color: var(--color-green-interface);
+}
+
+.fcolor_lotofacil {
+    color: var(--color-lotofacil);
+}
+
+.fcolor_Lotofácil {
+    color: var(--color-lotofacil);
+}
+
+.fcolor_Mega-Sena {
+    color: var(--color-megasena);
+}
+
+.fcolor_Quina {
+    color: var(--color-quina)
+}
+
+.fw700 {
+    font-weight: 700;
+}
+
+.pad_left19 {
+    padding-left: 19px;
+}
+
+.pad_top32 {
+    padding-top: 32px;
+}
+
+.margin_top30 {
+    margin-top: 30px;
+}
