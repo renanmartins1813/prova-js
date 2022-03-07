@@ -4,7 +4,7 @@
     margin: auto;
     display: grid;
     grid-template-columns: 130px 679px 427px 130px;
-    grid-template-rows: 75px auto 145px 75px;
+    grid-template-rows: 75px auto auto 75px;
     grid-template-areas:
         "h h h h"
         "mpt1 c1 c2 mpt2"
@@ -70,7 +70,7 @@
 }
 
 .container {
-    margin-top: 74px;
+    margin-top: 72px;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-around;
@@ -117,7 +117,7 @@
 .game {
     width: 100%;
     height: 415px;
-    overflow-y: scroll;
+    overflow-y: auto;
     margin: auto;
     display: flex;
     flex-flow: row wrap;
@@ -141,7 +141,6 @@
 
 .actions {
     display: flex;
-    margin-top: 44px;
 }
 
 .actions_btn {
@@ -199,15 +198,13 @@
 .cart_items {
     width: 280px;
     height: 270px;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
-    /* background-color: red; */
 }
 
 .cart_item_wrapper {
     width: 280px;
     height: 80px;
-    /* background-color: black; */
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -349,4 +346,20 @@
 
 .margin_top30 {
     margin-top: 30px;
+}
+
+.margin_bottom20{
+    margin-bottom: 20px;
+}
+
+.margin_bottom30{
+    margin-bottom: 30px;
+}
+
+.margin_bottom33{
+    margin-bottom: 33px;
+}
+
+.margin_bottom44{
+    margin-bottom: 44px;
 }

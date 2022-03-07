@@ -1,8 +1,5 @@
 const $game = document.getElementById('game');
 const $choose = document.getElementById('choose');
-const $lotofacil = document.getElementById('lotofacil');
-const $megasena = document.getElementById('megasena');
-const $quina = document.getElementById('quina');
 const $completeGame = document.getElementById('completeGame');
 const $clearGame = document.getElementById('clearGame');
 const $addToCart = document.getElementById('addToCart');
@@ -11,20 +8,20 @@ let currentId = 1;
 let currentGame;
 let games;
 
-function bets(){
-    games.forEach((game)=>{
+function bets() {
+    games.forEach((game, index) => {
         const $div = document.createElement('div');
+        $div.setAttribute('index', index);
         $div.setAttribute('id', game.type);
         $div.setAttribute('value', game.type);
         $div.setAttribute('active', 'false');
-        $div.setAttribute('data-js', "bets");
+        $div.setAttribute("data-js", "bets");
         $div.classList.add('chooseBnt', 'cursor_pointer');
         $div.textContent = game.type;
         $div.style.color = game.color;
         $div.style.border = 'solid'
         $div.style.borderColor = game.color;
-        console.log(game);
-        console.log(game.color);
+        $div.addEventListener('click', handlerGameType);
         $choose.appendChild($div)
     })
 }
@@ -34,12 +31,13 @@ function bets(){
         .then(res => res.json())
         .then(data => {
             games = data.types;
-            console.log(games);
             bets();
+            const $bets = document.querySelectorAll('[data-js="bets"]');
+            $bets[0].dispatchEvent(new Event('click'));
         })
 })()
 
-function init(){
+function init() {
 
 }
 
@@ -48,14 +46,14 @@ function addToCart(item) {
 }
 
 function removeFromCart(id) {
-    const aux = cart.filter((game)=>{
+    const aux = cart.filter((game) => {
         return game.id != id
     });
     cart = aux;
 }
 
-function getCartValue(){
-    const aux = cart.reduce((acc, game)=>{
+function getCartValue() {
+    const aux = cart.reduce((acc, game) => {
         return acc + game.price
     }, 0)
 
@@ -117,9 +115,12 @@ function getGameByName(name) {
 function cleanDivs() {
     $game.innerHTML = '';
     const $bets = document.querySelectorAll('[data-js="bets"]');
-    const length = $bets.length;
+    const length = $bets.length - 1;
     for (let i = 0; i <= length; i++) {
-        $bets[0].setAttribute('active', 'false');
+        const id = $bets[i].getAttribute('index')
+        $bets[i].style.color = games[id].color
+        $bets[i].style.backgroundColor = 'white';
+        $bets[i].setAttribute('active', 'false');
     }
 }
 
@@ -127,9 +128,11 @@ function toggleActiveGame(item) {
     item.setAttribute('active', 'true');
 }
 
-function changeDescription(text) {
+function changeDescription() {
     const $description = document.getElementById('description');
-    $description.textContent = text;
+    const $title = document.getElementById('title');
+    $description.textContent = currentGame.description;
+    $title.textContent = currentGame.type.toUpperCase();
 }
 
 function changeCurrentGame(game) {
@@ -138,18 +141,16 @@ function changeCurrentGame(game) {
 }
 
 function handlerGameType(ele) {
+    cleanDivs();
     const name = ele.target.textContent;
     const game = getGameByName(name);
+    ele.target.style.color = 'white';
+    ele.target.style.backgroundColor = game.color
     changeCurrentGame(game);
-    cleanDivs();
     toggleActiveGame(ele.target);
-    changeDescription(currentGame.description);
+    changeDescription();
     handlerButtons(currentGame.range);
 }
-
-$lotofacil.addEventListener('click', handlerGameType);
-$megasena.addEventListener('click', handlerGameType);
-$quina.addEventListener('click', handlerGameType);
 
 function catchSelectedButtons() {
     const $buttons = document.querySelectorAll('[data-js="buttons"]');
@@ -172,11 +173,11 @@ function catchButtonsValues(buttons) {
     )
 }
 
-function isGameOk(){
+function isGameOk() {
     const selecteds = catchSelectedButtons();
     const length = selecteds.length;
 
-    if(length < 1){
+    if (length < 1) {
         return false
     }
 
@@ -189,8 +190,8 @@ function handlerAddToCart(ele) {
     const newCartItem = creatCartItem(selectedsValues);
     const check = isGameOk();
 
-    if(!check){
-        return(
+    if (!check) {
+        return (
             alert("Você precisa selecionar no mínimo um número")
         )
     }
@@ -247,13 +248,37 @@ function toLocaleBRL(value) {
 
 $clearGame.addEventListener('click', clearGame)
 
+function emptyCart() {
+    const $cart_items = document.getElementById('cart_items');
+    const $wrapper = document.createElement('div');
+    const $div1 = document.createElement('div');
+    const $div2 = document.createElement('div');
+    const $div3 = document.createElement('div');
+
+    $div1.innerText = "Selecione um dos nossos jogos ao lado";
+    $div2.innerText = "Escolha os números e caso necessário use o botão 'Completar um jogo' para concluir a cartela";
+    $div3.innerText = "Após isso resta somente adicionar ao carrinho e efetuar a sua compra";
+
+    $div1.classList.add('margin_top30')
+    $div2.classList.add('margin_top30')
+    $div3.classList.add('margin_top30')
+    $wrapper.classList.add('margin_top30');
+
+    $wrapper.append($div1, $div2, $div3);
+    $cart_items.append($wrapper);
+}
+
 function renderCart() {
     const $cart_items = document.getElementById('cart_items');
     $cart_items.textContent = '';
-    
+
     const $total = document.getElementById('total');
     const cartValue = getCartValue();
     $total.textContent = ` ${toLocaleBRL(cartValue)}`
+
+    if (cart.length <= 0) {
+        emptyCart();
+    }
 
     cart.forEach((game) => {
         const $wrapper = document.createElement('div');
@@ -290,7 +315,7 @@ function renderCart() {
 }
 
 function creatCartItem(arrNumbers) {
-    return({
+    return ({
         numbers: arrNumbers,
         type: currentGame.type,
         price: currentGame.price,
@@ -333,10 +358,6 @@ function handlerCompleteGame() {
     }
 
     handlerNewSelecteds(newSelecteds);
-    //selectedsValues.push(...newSelecteds);
-    // const newCartItem =  creatCartItem(selectedsValues);
-    // addToCart(newCartItem);
-    // renderCart();
 }
 
 $completeGame.addEventListener('click', handlerCompleteGame);
