@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="./javascript/cart/index.js" defer></script>
+    <script src="./utils/games.json" defer></script>
     <script src="./javascript/index.js" defer></script>
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/root.css">
@@ -19,7 +19,7 @@
         <header class="header fw700 fcolor_main">
             <nav class="nav">
                 <div class="nav__div">
-                    <div class="nav__div_tgl cursor_pointer">TTGL</div>
+                    <div class="nav__div_tgl cursor_pointer">TGL</div>
                     <div class="cursor_pointer">Home</div>
                 </div>
                 <div class="nav__div">
@@ -36,7 +36,7 @@
             <div class="fs17 fcolor_secondary fw700">
                 Escolha um jogo
             </div>
-            <div class="choose">
+            <div id="choose" class="choose">
                 <div id="lotofacil" value="lotofacil" active="false" data-js="bets"
                     class="choose__lotofacil chooseBnt cursor_pointer">Lotofácil</div>
                 <div id="megasena" value="mega-sena" active="false" data-js="bets"
@@ -86,7 +86,7 @@
                     </div>
 
                     <div class="fs24 fcolor_main">
-                        <span class="fw700">VALOR</span> TOTAL: <span id="total">R$ 0.00</span>
+                        <span class="fw700">VALOR</span> TOTAL: <span id="total">R$ 0,00</span>
                     </div>
                 </div>
 
@@ -103,3 +103,7 @@
 </body>
 
 </html>
+
+<div id="test">
+
+</div>

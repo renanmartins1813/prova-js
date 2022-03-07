@@ -1,4 +1,5 @@
 const $game = document.getElementById('game');
+const $choose = document.getElementById('choose');
 const $lotofacil = document.getElementById('lotofacil');
 const $megasena = document.getElementById('megasena');
 const $quina = document.getElementById('quina');
@@ -10,13 +11,37 @@ let currentId = 1;
 let currentGame;
 let games;
 
+function bets(){
+    games.forEach((game)=>{
+        const $div = document.createElement('div');
+        $div.setAttribute('id', game.type);
+        $div.setAttribute('value', game.type);
+        $div.setAttribute('active', 'false');
+        $div.setAttribute('data-js', "bets");
+        $div.classList.add('chooseBnt', 'cursor_pointer');
+        $div.textContent = game.type;
+        $div.style.color = game.color;
+        $div.style.border = 'solid'
+        $div.style.borderColor = game.color;
+        console.log(game);
+        console.log(game.color);
+        $choose.appendChild($div)
+    })
+}
+
 (() => {
     fetch('./../utils/games.json')
         .then(res => res.json())
         .then(data => {
             games = data.types;
+            console.log(games);
+            bets();
         })
 })()
+
+function init(){
+
+}
 
 function addToCart(item) {
     cart.push(item);
@@ -147,10 +172,30 @@ function catchButtonsValues(buttons) {
     )
 }
 
+function isGameOk(){
+    const selecteds = catchSelectedButtons();
+    const length = selecteds.length;
+
+    if(length < 1){
+        return false
+    }
+
+    return true
+}
+
 function handlerAddToCart(ele) {
     const selecteds = catchSelectedButtons();
     const selectedsValues = catchButtonsValues(selecteds);
     const newCartItem = creatCartItem(selectedsValues);
+    const check = isGameOk();
+
+    if(!check){
+        return(
+            alert("Você precisa selecionar no mínimo um número")
+        )
+    }
+
+    clearGame();
     addToCart(newCartItem);
     renderCart();
 }
@@ -288,10 +333,10 @@ function handlerCompleteGame() {
     }
 
     handlerNewSelecteds(newSelecteds);
-    selectedsValues.push(...newSelecteds);
-    const newCartItem =  creatCartItem(selectedsValues);
-    addToCart(newCartItem);
-    renderCart();
+    //selectedsValues.push(...newSelecteds);
+    // const newCartItem =  creatCartItem(selectedsValues);
+    // addToCart(newCartItem);
+    // renderCart();
 }
 
 $completeGame.addEventListener('click', handlerCompleteGame);

@@ -7,7 +7,6 @@
       "range": 25,
       "price": 2.5,
       "max-number": 15,
-      "maxNumber": 15,
       "color": "#7F3992"
     },
     {
@@ -16,7 +15,6 @@
       "range": 60,
       "price": 4.5,
       "max-number": 6,
-      "maxNumber": 6,
       "color": "#01AC66"
     },
     {
@@ -25,7 +23,6 @@
       "range": 80,
       "price": 2,
       "max-number": 5,
-      "maxNumber": 5,
       "color": "#F79C31"
     }
   ]
