@@ -176,8 +176,7 @@ function catchButtonsValues(buttons) {
 function isGameOk() {
     const selecteds = catchSelectedButtons();
     const length = selecteds.length;
-
-    if (length < 1) {
+    if (length >= currentGame.maxNumber) {
         return false
     }
 
@@ -189,10 +188,10 @@ function handlerAddToCart(ele) {
     const selectedsValues = catchButtonsValues(selecteds);
     const newCartItem = creatCartItem(selectedsValues);
     const check = isGameOk();
-
-    if (!check) {
+    const restValue = currentGame.maxNumber - catchSelectedButtons().length
+    if (check) {
         return (
-            alert("Você precisa selecionar no mínimo um número")
+            alert("Você precisa selecionar mais " + restValue + " números")
         )
     }
 
@@ -287,7 +286,8 @@ function renderCart() {
         const $trash = createTrash(game.id);
 
         const $contianer = document.createElement('div');
-        $contianer.classList.add('cart_item', `cart_item_${game.type}`);
+        $contianer.classList.add('cart_item');
+        $contianer.style.borderLeftColor = game.color
 
         const $numbers = document.createElement('div');
         $numbers.classList.add('fs15px', 'fw700');
@@ -297,14 +297,14 @@ function renderCart() {
         $description.classList.add('fs16px');
 
         const $span = document.createElement('span');
-        $span.classList.add('fw700', `fcolor_${game.type}`);
+        $span.classList.add('fw700');
+        $span.style.color = game.color
         $span.textContent = game.type;
 
         const $value = document.createElement('span');
         $value.textContent = ` ${toLocaleBRL(game.price)}`
 
         $description.append($span, $value);
-
 
         $contianer.append($numbers, $description);
 
@@ -319,6 +319,7 @@ function creatCartItem(arrNumbers) {
         numbers: arrNumbers,
         type: currentGame.type,
         price: currentGame.price,
+        color: currentGame.color,
         id: currentId++
     })
 }
@@ -338,6 +339,22 @@ function handlerNewSelecteds(newSelecteds) {
     })
 }
 
+function checkValues(oldValues, newValues, check) {
+    for (let i = 0; i < oldValues.length; i++) {
+        if (check == oldValues[i]) {
+            return true
+        }
+    }
+
+    for (let i = 0; i < newValues.length; i++) {
+        if (check == newValues[i]) {
+            return true
+        }
+    }
+
+    return false
+}
+
 function handlerCompleteGame() {
     const selecteds = catchSelectedButtons();
     const selectedsValues = catchButtonsValues(selecteds);
@@ -345,7 +362,7 @@ function handlerCompleteGame() {
     const newSelecteds = [];
     while (missingNumbers > 0) {
         const aux = handlerValue(Math.floor(Math.random() * currentGame.range + 1));
-        const check = selectedsValues.includes(aux);
+        const check = checkValues(selectedsValues, newSelecteds, aux);
         if (check) {
             continue
         }

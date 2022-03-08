@@ -94,22 +94,6 @@
     align-items: center;
 }
 
-.choose__lotofacil {
-    border: solid var(--color-lotofacil);
-    color: var(--color-lotofacil);
-}
-
-.choose__megasena {
-    border: solid var(--color-megasena);
-    background-color: var(--color-megasena);
-    color: #fff;
-}
-
-.choose__quina {
-    border: solid var(--color-quina);
-    color: var(--color-quina);
-}
-
 .description {
     min-height: 2em;
 }
@@ -234,18 +218,6 @@
     border-top-left-radius: 4px;
 }
 
-.cart_item_Lotofácil {
-    border-left-color: var(--color-lotofacil);
-}
-
-.cart_item_Mega-Sena {
-    border-left-color: var(--color-megasena);
-}
-
-.cart_item_Quina {
-    border-left-color: var(--color-quina);
-}
-
 .cart_save {
     width: 317px;
     height: 96px;
@@ -320,17 +292,6 @@
     color: var(--color-lotofacil);
 }
 
-.fcolor_Lotofácil {
-    color: var(--color-lotofacil);
-}
-
-.fcolor_Mega-Sena {
-    color: var(--color-megasena);
-}
-
-.fcolor_Quina {
-    color: var(--color-quina)
-}
 
 .fw700 {
     font-weight: 700;
