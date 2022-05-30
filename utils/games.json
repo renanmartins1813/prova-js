@@ -27,6 +27,15 @@
       "max-number": 5,
       "maxNumber": 5,
       "color": "#F79C31"
+    }, 
+    {
+      "type": "Lotomania",
+      "description": "Escolha 6 números dos 60 disponíveis na mega-sena. Ganhe com 6, 5 ou 4 acertos. São realizados dois sorteios semanais para você apostar e torcer para ficar milionário.",
+      "range": 16,
+      "price": 6,
+      "max-number": 8,
+      "maxNumber": 8,
+      "color": "#964b00"
     }
   ]
 }
